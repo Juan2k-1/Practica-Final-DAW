@@ -1,6 +1,13 @@
-@media (max-width: 600px) {
-   div.main {   
-    flex-direction: column;
-  }
-}
+@media screen and (max-width: 600px) {
+    header .w3-bar {
+        display: none;
+    }
 
+    header .w3-bar.w3-blue {
+        display: block;
+    }
+
+    #vuelosMenuBtn {
+        display: block;
+    }
+}

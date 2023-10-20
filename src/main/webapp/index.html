@@ -6,14 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/w3.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/mediaQuerys.css" type="text/css"/>
 
         <style>
             body,h1,h2,h3,h4,h5,h6 {
                 font-family: Helvetica, Arial, sans-serif
-            }
-            .myLink {
-                display: none
-            }
+            }           
         </style>
     </head>
     <body class="w3-light-grey">
@@ -21,14 +19,14 @@
         <!-- Barra de navegación -->
         <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
             <a href="#" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
-            <a href="#" class="w3-bar-item w3-button w3-right w3-hover-blue w3-text-black w3-hide-small"><i class="fa fa-search"></i></a>
-            <input class="w3-bar-item w3-right w3-input w3-text-black w3-hide-small" type="text" id="search-bar" placeholder="Buscar...">            
+            <a href="#" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>
+            <a href="#" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue w3-hide-large w3-hide-medium" id="vuelosMenuBtn"><i class="fa fa-plane"></i> Vuelos</a>
         </div>
 
         <!-- Cabecera -->
-        <header class="w3-display-container w3-content" style="max-width:1500px">
-            <img class="w3-image" src="images/city2.jpg" alt="London" width="1500" height="700"/>
-            <div class="w3-display-middle" style="width:65%">
+        <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
+            <img class="w3-image w3-hide-small" src="images/city2.jpg" alt="London" width="1500" height="700"/>
+            <div class="w3-display-middle " style="width:65%">
                 <div class="w3-bar w3-blue">
                     <button class="w3-bar-item w3-text-black w3-blue"><i class="fa fa-plane w3-margin-right"></i><strong>Vuelos</strong></button>                  
                 </div>
