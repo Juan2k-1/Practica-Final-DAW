@@ -1,0 +1,5 @@
+# Ignorar archivos dentro de la carpeta target
+/target/
+
+# Ignorar el archivo nb-configuration.xml
+nb-configuration.xml
