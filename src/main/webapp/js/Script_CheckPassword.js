@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     passwordInput.addEventListener("blur", function () {
         var password = passwordInput.value;
-        var passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        var passwordRegex = /^[a-zA-Z0-9]{8,}$/;
 
         if (passwordRegex.test(password)) {
             // Contraseña válida, no hacer nada
