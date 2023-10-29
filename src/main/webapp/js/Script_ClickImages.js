@@ -5,23 +5,25 @@ var imagenSanFrancisco = document.getElementById("SanFrancisco");
 var imagenPisa = document.getElementById("Pisa");
 var imagenParis = document.getElementById("Paris");
 
+var destinoInput = document.getElementById("destino");
+
 // Agrega eventos de clic a los nombres de las imágenes
-imagenCinqueTerre.addEventListener("click", function () {
-    window.location.href = "index.html";
+imagenCinqueTerre.addEventListener("click", function () { 
+    destino.value = "Cinque Terre";
 });
 
 imagenNewYork.addEventListener("click", function () {
-    window.location.href = "index.html";
+    destino.value = "New York";
 });
 
 imagenSanFrancisco.addEventListener("click", function () {
-    window.location.href = "index.html";
+    destino.value = "San Francisco";
 });
 
 imagenPisa.addEventListener("click", function () {
-    window.location.href = "index.html";
+    destino.value = "Pisa";
 });
 
 imagenParis.addEventListener("click", function () {
-    window.location.href = "index.html";
+    destino.value = "Paris";
 });
