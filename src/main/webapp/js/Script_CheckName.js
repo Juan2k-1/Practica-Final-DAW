@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     nameInput.addEventListener("blur", function () {
         var name = nameInput.value;
-        var nameRegex = /^[a-zA-Z ]{2,}$/;
+        var nameRegex = /^[a-zA-ZáéíóúñÁÉÍÓÚÑ ]{2,}$/;
 
         if (nameRegex.test(name)) {
             // Nombre válido, no hacer nada
