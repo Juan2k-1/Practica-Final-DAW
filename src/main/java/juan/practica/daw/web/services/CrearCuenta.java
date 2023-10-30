@@ -105,7 +105,7 @@ public class CrearCuenta extends HttpServlet
             out.println("<h1>Servlet CrearCuenta at " + request.getContextPath() + "</h1>");
             out.println("<h2>Estado de la inserción</h2>");
             out.println(message);
-            out.println("<p><a href=\"index.html\">Volver</a>");
+            out.println("<p><a href=\"index.html\">Volver</a></p>");
             out.println("</body>");
             out.println("</html>");
         }
