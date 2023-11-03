@@ -2,22 +2,17 @@ package juan.practica.daw.web.services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.Resource;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
+import juan.practica.daw.models.Admin_HibernateUtilPostgr;
 import juan.practica.daw.models.Usuario;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -30,9 +25,8 @@ import juan.practica.daw.models.Usuario;
 public class CrearCuenta extends HttpServlet
 {
 
-    @Resource(name = "connectionPool")
-    private DataSource javaBuenaVidaAppPool;
-
+    //@Resource(name = "connectionPool")
+    //private DataSource javaBuenaVidaAppPool;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -45,18 +39,11 @@ public class CrearCuenta extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        String message = null;
-        Usuario user;
-        Connection connection;
-        PreparedStatement ps;
-        int filasAfectadas = 0;
-
         try
         {
             //Establecer la conexión 
-            Context c = new InitialContext();
-            javaBuenaVidaAppPool = (DataSource) c.lookup("jdbc/myDatasource");
-            connection = javaBuenaVidaAppPool.getConnection();
+            Session session = Admin_HibernateUtilPostgr.getSessionFactory().openSession();
+            Transaction transaction = session.beginTransaction();
 
             //Leer y asignar los campos del formulario a un usuario
             //String id = request.getParameter("id");
@@ -66,28 +53,13 @@ public class CrearCuenta extends HttpServlet
             String email = request.getParameter("email");
             String nickName = request.getParameter("usuario");
 
-            user = new Usuario(nombre, apellidos, email, nickName);
+            Usuario user = new Usuario(nombre, apellidos, email, nickName);
+       
+            session.save(user);
+            transaction.commit();
+            session.close();
 
-            //Preparar la sentencia SQL
-            ps = connection.prepareStatement("INSERT INTO USUARIO (NOMBRE, APELLIDOS, EMAIL, NICKNAME) VALUES (?, ?, ?, ?)");
-            //ps.setLong(1, user.getId());
-            ps.setString(1, user.getNombre());
-            ps.setString(2, user.getApellidos());
-            ps.setString(3, user.getEmail());
-            ps.setString(4, user.getNickName());
-
-            //Ejecutar instrucción SQL y guardar resultado en message
-            filasAfectadas = ps.executeUpdate();
-            if (filasAfectadas > 0)
-            {
-                message = "<p>OK: Inserción realizada correctamente</p>";
-            } else
-            {
-                message = "<p>ERROR: Ha fallado la inserción</p>";
-            }
-            ps.close();
-            connection.close();
-        } catch (NamingException | SQLException | NumberFormatException ex)
+        } catch (NumberFormatException ex)
         {
             Logger.getLogger(CrearCuenta.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
         }
@@ -104,7 +76,7 @@ public class CrearCuenta extends HttpServlet
             out.println("<body>");
             out.println("<h1>Servlet CrearCuenta at " + request.getContextPath() + "</h1>");
             out.println("<h2>Estado de la inserción</h2>");
-            out.println(message);
+            //out.println(message);
             out.println("<p><a href=\"index.html\">Volver</a></p>");
             out.println("</body>");
             out.println("</html>");

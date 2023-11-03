@@ -3,3 +3,4 @@
 
 # Ignorar el archivo nb-configuration.xml
 nb-configuration.xml
+/nbproject/

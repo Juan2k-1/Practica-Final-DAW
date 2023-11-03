@@ -16,10 +16,10 @@ import javax.persistence.Table;
 @Table(name = "usuario")
 public class Usuario implements Serializable
 {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
@@ -47,6 +47,22 @@ public class Usuario implements Serializable
      * @param email
      * @param nickName
      */
+    public Usuario(Long id, String nombre, String apellido, String email, String nickName)
+    {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellido;
+        this.email = email;
+        this.nickName = nickName;
+    }
+    
+    /**
+     *
+     * @param nombre
+     * @param apellido
+     * @param email
+     * @param nickName
+     */
     public Usuario(String nombre, String apellido, String email, String nickName)
     {
         this.nombre = nombre;
@@ -59,7 +75,7 @@ public class Usuario implements Serializable
      *
      * @return
      */
-    public long getId()
+    public Long getId()
     {
         return id;
     }
@@ -170,5 +186,11 @@ public class Usuario implements Serializable
         }
         final Usuario other = (Usuario) obj;
         return this.id == other.id;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "juan.practica.daw.models.Usuario[ id=" + id + " ]";
     }
 }
