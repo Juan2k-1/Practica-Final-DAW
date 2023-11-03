@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import juan.practica.daw.models.Admin_HibernateUtilPostgr;
+import juan.practica.daw.persistence.Admin_HibernateUtilPostgr;
 import juan.practica.daw.models.Usuario;
+import juan.practica.daw.persistence.dao.UsuarioDAO;
+import juan.practica.daw.persistence.validation.UserValidation;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -53,10 +55,25 @@ public class CrearCuenta extends HttpServlet
             String email = request.getParameter("email");
             String nickName = request.getParameter("usuario");
 
-            Usuario user = new Usuario(nombre, apellidos, email, nickName);
-       
-            session.save(user);
-            transaction.commit();
+            UsuarioDAO usuarioDAO = new UsuarioDAO(session);
+            if (!UserValidation.validarNombre(nombre))
+            {
+
+            } else if (!UserValidation.validarApellidos(apellidos))
+            {
+
+            } else if (!UserValidation.validarEmail(email))
+            {
+
+            } else if (!UserValidation.validarNickName(nickName))
+            {
+
+            } else
+            {
+                Usuario user = new Usuario(nombre, apellidos, email, nickName);
+                usuarioDAO.save(user);
+                transaction.commit();
+            }
             session.close();
 
         } catch (NumberFormatException ex)

@@ -1,4 +1,4 @@
-package juan.practica.daw.models;
+package juan.practica.daw.persistence;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;

@@ -1,6 +1,6 @@
 package juan.practica.daw.model.tests;
 
-import juan.practica.daw.models.Admin_HibernateUtilPostgr;
+import juan.practica.daw.persistence.Admin_HibernateUtilPostgr;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.AfterEach;
