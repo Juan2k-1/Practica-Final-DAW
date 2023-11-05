@@ -42,6 +42,7 @@ public class Usuario implements Serializable
 
     /**
      *
+     * @param id
      * @param nombre
      * @param apellido
      * @param email

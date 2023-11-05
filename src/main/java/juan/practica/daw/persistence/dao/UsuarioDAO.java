@@ -12,16 +12,15 @@ import org.hibernate.Transaction;
  */
 public class UsuarioDAO
 {
-
     private final Session session;
 
     /**
      *
-     * @param sessionFactory
+     * @param session
      */
-    public UsuarioDAO(Session sessionFactory)
+    public UsuarioDAO(Session session)
     {
-        this.session = sessionFactory;
+        this.session = session;
     }
 
     /**
@@ -37,7 +36,6 @@ public class UsuarioDAO
             transaction.commit();
         } catch (Exception e)
         {
-            //this.vMensaje.MensajeDeError("Error al insertar un usuario", e.getMessage());
             transaction.rollback();
         }
     }
@@ -55,7 +53,6 @@ public class UsuarioDAO
             transaction.commit();
         } catch (Exception e)
         {
-            //this.vMensaje.MensajeDeError("Error al insertar un usuario", e.getMessage());
             transaction.rollback();
         }
     }
@@ -73,7 +70,6 @@ public class UsuarioDAO
             transaction.commit();
         } catch (Exception e)
         {
-            //this.vMensaje.MensajeDeError("Error al insertar un usuario", e.getMessage());
             transaction.rollback();
         }
     }
