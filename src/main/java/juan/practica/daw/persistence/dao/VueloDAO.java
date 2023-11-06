@@ -96,7 +96,7 @@ public class VueloDAO
      */
     public ArrayList<Vuelo> findAll(long id)
     {
-        Query consulta = this.session.createNativeQuery("SELECT * FROM USUARIO", Vuelo.class);
+        Query consulta = this.session.createNativeQuery("SELECT * FROM VUELO", Vuelo.class);
         Transaction transaction = this.session.beginTransaction();
         ArrayList<Vuelo> vuelos = (ArrayList<Vuelo>) consulta.getResultList();
         transaction.commit();

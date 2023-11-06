@@ -1,12 +1,13 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Iniciar Sesión</title>
-        <link href="css/w3.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/css/w3.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/misEstilos.css" type="text/css"/>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/misEstilos.css" type="text/css"/>
         <style>
             p {
                 display: inline;
@@ -38,12 +39,12 @@
 
         <!-- Barra de navegación -->
         <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
-            <a href="index.html" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
-            <a href="InicioSesion.html" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>           
+            <a href="${pageContext.request.contextPath}/jsp/index.jsp" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
+            <a href="${pageContext.request.contextPath}/jsp/InicioSesion.jsp" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>           
         </div>
 
         <header class="w3-display-container">
-            <img class="w3-image" src="images/city2.jpg" alt="London" style="width: 100%; height: 100vh; object-fit: cover;"/>
+            <img class="w3-image" src="${pageContext.request.contextPath}/images/city2.jpg" alt="London" style="width: 100%; height: 100vh; object-fit: cover;"/>
             <div class="login-container w3-card-4 w3-display-topmiddle">
                 <form class="w3-container">
                     <label class="w3-text-blue"><b><strong>Usuario</strong></b></label>
@@ -54,10 +55,10 @@
 
                     <button type="submit" class="w3-button w3-blue w3-margin-top">Iniciar Sesión</button>
                     <p>¿No tienes cuenta? Regístrate</p>
-                    <a href="CreateAccount.html" class="w3-button w3-blue w3-margin-top w3-right">Registrarse</a>
+                    <a href="${pageContext.request.contextPath}/jsp/CreateAccount.jsp" class="w3-button w3-blue w3-margin-top w3-right">Registrarse</a>
                 </form>
             </div>
         </header>
-        <script src="js/Script_RefreshLogin.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/Script_RefreshLogin.js" type="text/javascript"></script>
     </body>
 </html>

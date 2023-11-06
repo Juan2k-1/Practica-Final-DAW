@@ -1,10 +1,11 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <title>Buena Vida webApp</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/w3.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/css/w3.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
@@ -26,13 +27,13 @@
 
         <!-- Barra de navegación -->
         <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
-            <a href="index.html" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
-            <a href="InicioSesion.html" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>
+            <a href="${pageContext.request.contextPath}/jsp/index.jsp" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
+            <a href="${pageContext.request.contextPath}/jsp/InicioSesion.jsp" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>
         </div>
 
         <!-- Cabecera -->
         <header class="w3-display-container">
-            <img class="w3-image" src="images/city2.jpg" alt="London" style="width: 100%; height: 100vh; object-fit: cover;"/>
+            <img class="w3-image" src="${pageContext.request.contextPath}/images/city2.jpg" alt="London" style="width: 100%; height: 100vh; object-fit: cover;"/>
             <div class="w3-display-middle " style="width:65%">
                 <div class="w3-bar w3-blue">
                     <button class="w3-bar-item w3-text-black w3-blue"><i class="fa fa-plane w3-margin-right"></i><strong>Vuelos</strong></button>                  
@@ -60,7 +61,7 @@
                             <input class="w3-input w3-border" type="date">
                         </div>
                     </div>
-                    <p><a href="Vuelos.html" class="w3-button w3-black">Buscar y encontrar vuelos</a></p>
+                    <p><a href="Vuelos.jsp" class="w3-button w3-black">Buscar y encontrar vuelos</a></p>
                 </div>              
             </div>
         </header>
@@ -74,7 +75,7 @@
             <div class="w3-row-padding w3-text-white w3-large">
                 <div class="w3-half w3-margin-bottom">
                     <div class="w3-display-container">
-                        <img src="images/cinqueterre.jpg" alt="Cinque Terre" style="width:100%;">
+                        <img src="${pageContext.request.contextPath}/images/cinqueterre.jpg" alt="Cinque Terre" style="width:100%;">
                         <span id="CinqueTerre" class="w3-display-bottomleft w3-padding " style="cursor:pointer">Cinque Terre</span>
                     </div>
                 </div>
@@ -82,13 +83,13 @@
                     <div class="w3-row-padding" style="margin:0 -16px">
                         <div class="w3-half w3-margin-bottom">
                             <div class="w3-display-container">
-                                <img src="images/newyork2.jpg" alt="New York" style="width:100%;">
+                                <img src="${pageContext.request.contextPath}/images/newyork2.jpg" alt="New York" style="width:100%;">
                                 <span id="NewYork" class="w3-display-bottomleft w3-padding" style="cursor:pointer">New York</span>
                             </div>
                         </div>
                         <div class="w3-half w3-margin-bottom">
                             <div class="w3-display-container">
-                                <img src="images/sanfran.jpg" alt="San Francisco" style="width:100%;">
+                                <img src="${pageContext.request.contextPath}/images/sanfran.jpg" alt="San Francisco" style="width:100%;">
                                 <span id="SanFrancisco" class="w3-display-bottomleft w3-padding" style="cursor:pointer">San Francisco</span>
                             </div>
                         </div>
@@ -96,13 +97,13 @@
                     <div class="w3-row-padding" style="margin:0 -16px">
                         <div class="w3-half w3-margin-bottom">
                             <div class="w3-display-container">
-                                <img src="images/pisa.jpg" alt="Pisa" style="width:100%;">
+                                <img src="${pageContext.request.contextPath}/images/pisa.jpg" alt="Pisa" style="width:100%;">
                                 <span id="Pisa" class="w3-display-bottomleft w3-padding" style="cursor:pointer">Pisa</span>
                             </div>
                         </div>
                         <div class="w3-half w3-margin-bottom">
                             <div class="w3-display-container">
-                                <img src="images/paris.jpg" alt="Paris" style="width:100%;">
+                                <img src="${pageContext.request.contextPath}/images/paris.jpg" alt="Paris" style="width:100%;">
                                 <span id="Paris" class="w3-display-bottomleft w3-padding" style="cursor:pointer">Paris</span>
                             </div>
                         </div>
@@ -174,6 +175,6 @@
             </div>
             <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
         </footer>
-        <script src="js/Script_ClickImages.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/Script_ClickImages.js" type="text/javascript"></script>
     </body>
 </html>
