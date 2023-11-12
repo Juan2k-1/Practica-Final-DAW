@@ -5,7 +5,7 @@
         <title>Vuelos</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/w3.css" type="text/css"/>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/w3.css" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             body,h1,h2,h3,h4,h5,h6 {
@@ -67,12 +67,12 @@
     <body>
         <!-- Barra de navegación -->
         <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
-            <a href="index.html" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
-            <a href="InicioSesion.html" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>
+            <a href="${pageContext.request.contextPath}/index.html" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
+            <a href="${pageContext.request.contextPath}/InicioSesion.html" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>
         </div>
 
         <header class="w3-display-container">
-            <img class="w3-image" src="images/city2.jpg" alt="London" style="width: 100%; height: 100vh; object-fit: cover;"/>
+            <img class="w3-image" src="${pageContext.request.contextPath}/images/city2.jpg" alt="London" style="width: 100%; height: 100vh; object-fit: cover;"/>
             <div class="w3-display-middle" style="width:95%">
                 <table class="w3-table w3-bordered w3-white">
                     <thead class="table-header-row">

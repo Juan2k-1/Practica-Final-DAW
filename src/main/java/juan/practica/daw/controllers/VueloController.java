@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "VueloController", urlPatterns =
 {
-    "/VueloController/*"
+    "/Vuelos/*"
 })
 public class VueloController extends HttpServlet
 {

@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
  */
 public class UsuarioDAO
 {
+
     private final Session session;
 
     /**
@@ -85,6 +86,72 @@ public class UsuarioDAO
         Transaction transaction = this.session.beginTransaction();
         Usuario usuario = (Usuario) consulta.getSingleResult();
         transaction.commit();
+        return usuario;
+    }
+
+    /**
+     *
+     * @param email
+     * @return
+     */
+    public Usuario findByEmail(String email)
+    {
+        /*Query consulta = this.session.createNativeQuery("SELECT * FROM USUARIO U WHERE U.email = :email", Usuario.class);
+        consulta.setParameter("email", email);
+        Transaction transaction = this.session.beginTransaction();
+        Usuario usuario = (Usuario) consulta.getSingleResult();
+        transaction.commit();
+        return usuario;*/
+  
+        Usuario usuario = null;
+        try
+        {
+            Query<Usuario> query = this.session.createQuery("FROM Usuario WHERE email = :email", Usuario.class);
+            query.setParameter("email", email);
+            usuario = query.uniqueResult();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        } finally
+        {
+            if (session != null && session.isOpen())
+            {
+                session.close();
+            }
+        }
+        return usuario;
+    }
+
+    /**
+     *
+     * @param nickName
+     * @return
+     */
+    public Usuario findByNickName(String nickName)
+    {
+        /*Query consulta = this.session.createNativeQuery("SELECT * FROM USUARIO U WHERE U.nickname = :nickName", Usuario.class);
+        consulta.setParameter("nickName", nickName);
+        Transaction transaction = this.session.beginTransaction();
+        Usuario usuario = (Usuario) consulta.getSingleResult();
+        transaction.commit();
+        return usuario;*/
+        
+        Usuario usuario = null;
+        try
+        {
+            Query<Usuario> query = this.session.createQuery("FROM Usuario WHERE nickname = :nickName", Usuario.class);
+            query.setParameter("nickName", nickName);
+            usuario = query.uniqueResult();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        } finally
+        {
+            if (session != null && session.isOpen())
+            {
+                session.close();
+            }
+        }
         return usuario;
     }
 

@@ -61,7 +61,7 @@
                             <input class="w3-input w3-border" type="date">
                         </div>
                     </div>
-                    <p><a href="Vuelos.jsp" class="w3-button w3-black">Buscar y encontrar vuelos</a></p>
+                    <p><a href="${pageContext.request.contextPath}/jsp/Vuelos.jsp" class="w3-button w3-black">Buscar y encontrar vuelos</a></p>
                 </div>              
             </div>
         </header>

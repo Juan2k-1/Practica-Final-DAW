@@ -14,5 +14,5 @@ CREATE TABLE USUARIO (
     nombre text NOT NULL,
     apellidos text NOT NULL,
     email text NOT NULL UNIQUE,
-    nickName text NOT NULL UNIQUE
+    nickname text NOT NULL UNIQUE
 );

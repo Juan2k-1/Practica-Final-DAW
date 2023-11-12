@@ -5,9 +5,9 @@
         <title>Crear cuenta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/w3.css" type="text/css"/>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/w3.css" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/misEstilos.css" type="text/css"/>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/misEstilos.css" type="text/css"/>
         <style>
             .form-container input[type="text"],
             .form-container input[type="password"] {
@@ -38,14 +38,14 @@
     <body>
 
         <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
-            <a href="index.jsp" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
-            <a href="InicioSesion.jsp" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>           
+            <a href="${pageContext.request.contextPath}/jsp/index.jsp" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
+            <a href="${pageContext.request.contextPath}/jsp/InicioSesion.jsp" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>           
         </div>
 
         <header class="w3-display-container">
-            <img class="w3-image" src="images/city2.jpg" alt="London" style="width: 100%; height: 100vh; object-fit: cover;"/>
+            <img class="w3-image" src="${pageContext.request.contextPath}/images/city2.jpg" alt="London" style="width: 100%; height: 100vh; object-fit: cover;"/>
             <div class="w3-container form-container w3-display-topmiddle" style="width:75%">
-                <form id="form1" action="${pageContext.request.contextPath}/CrearCuenta" method="post" onsubmit="return validaAltaUsuario()" class="w3-container w3-card-4">
+                <form id="form1" action="${pageContext.request.contextPath}/Usuarios/CrearCuenta" method="post" onsubmit="return validaAltaUsuario()" class="w3-container w3-card-4">
                     <h2 class="w3-center w3-text-blue"><strong>Crear cuenta</strong></h2>
 
                     <label for="usuario">Usuario:</label>
@@ -71,11 +71,11 @@
             </div>
         </header>
 
-        <script src="js/Script_CheckPassword.js" type="text/javascript"></script>
-        <script src="js/Script_RepitPassword.js" type="text/javascript"></script>
-        <script src="js/Script_CheckEmail.js" type="text/javascript"></script>
-        <script src="js/Script_CheckLastName.js" type="text/javascript"></script>
-        <script src="js/Script_CheckName.js" type="text/javascript"></script>
-        <script src="js/Script_CheckUser.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/Script_CheckPassword.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/Script_RepitPassword.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/Script_CheckEmail.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/Script_CheckLastName.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/Script_CheckName.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/Script_CheckUser.js" type="text/javascript"></script>
     </body>
 </html>

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "InicioController", urlPatterns =
 {
-    "/Inicio"
+    "/"
 })
 public class InicioController extends HttpServlet
 {
@@ -61,6 +61,6 @@ public class InicioController extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-       
+        
     }
 }

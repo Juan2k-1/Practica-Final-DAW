@@ -14,6 +14,14 @@ public class UserValidation {
         return apellidos.matches("^[a-zA-ZáéíóúñÁÉÍÓÚÑ` ]{2,}$");
     }
     
+    public static boolean validarContraseña(String contraseña) {
+        return contraseña.matches("^[a-zA-Z0-9]{8,}$");
+    }
+    
+    public static boolean validarRepitContraseña(String contraseña) {
+        return contraseña.matches("^[a-zA-Z0-9]{8,}$");
+    }
+    
     public static boolean validarEmail(String email) {
         return email.matches("^[a-zA-Z0-9@.]{10,}$");
     }
