@@ -27,8 +27,8 @@
 
         <!-- Barra de navegación -->
         <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
-            <a href="${pageContext.request.contextPath}/jsp/index.jsp" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
-            <a href="${pageContext.request.contextPath}/jsp/InicioSesion.jsp" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>
+            <a href="${pageContext.request.contextPath}/home/" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
+            <a href="${pageContext.request.contextPath}/home/IniciarSesion/" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>
         </div>
 
         <!-- Cabecera -->

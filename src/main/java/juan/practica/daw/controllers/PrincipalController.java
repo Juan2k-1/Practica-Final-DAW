@@ -20,25 +20,35 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-@WebServlet(name = "CrearCuentaServlet", urlPatterns =
+@WebServlet(name = "PrincipalController", urlPatterns =
 {
-    "/Usuarios/*"
+    "/home/*"
 })
-public class CrearCuentaServlet extends HttpServlet
+public class PrincipalController extends HttpServlet
 {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        String accion;
-        accion = request.getPathInfo();
+        String accion = request.getPathInfo();
         String vista = null;
-
         System.out.println(accion);
+
         switch (accion)
         {
-            case "/CrearCuenta":
+            case "/IniciarSesion/":
             {
+                vista = "/jsp/InicioSesion.jsp";
+                break;
+            }
+            case "/IniciarSesion/CrearCuenta/":
+            {
+                vista = "/jsp/CreateAccount.jsp";
+                break;
+            }
+            case "/IniciarSesion/CrearCuenta/GuardarUsuario/":
+            {
+
                 String nombre = request.getParameter("nombre");
                 String apellidos = request.getParameter("apellidos");
                 String email = request.getParameter("email");
@@ -52,12 +62,16 @@ public class CrearCuentaServlet extends HttpServlet
                 {
                     if (esNicknameUnico(nickName) && esEmailUnico(email))
                     {
+                        System.out.println("Entro aqui");
                         Usuario user = new Usuario(nombre, apellidos, email, nickName);
                         registrarEnBD(user);
                         vista = "/jsp/RegistroExitoso.jsp";
+                    } else if (!esNicknameUnico(nickName))
+                    {
+                        vista = "/jsp/NickName_Repetido.jsp";
                     } else
                     {
-                        vista = "/jsp/RegistroFallido.jsp";
+                        vista = "/jsp/Email_Repetido.jsp";
                     }
                 } else
                 {
@@ -65,6 +79,9 @@ public class CrearCuentaServlet extends HttpServlet
                 }
                 break;
             }
+            default:
+                vista = "/jsp/index.jsp";
+                break;
         }
         RequestDispatcher rd = request.getRequestDispatcher(vista);
         rd.forward(request, response);
@@ -83,18 +100,19 @@ public class CrearCuentaServlet extends HttpServlet
         boolean resultado;
         Session session = null;
         Transaction transaction = null;
+        System.out.println(nickName);
         try
         {
             session = Admin_HibernateUtilPostgr.getSessionFactory().openSession();
             UsuarioDAO usuarioDAO = new UsuarioDAO(session);
-            Usuario usuarioExistente = usuarioDAO.findByNickName(nickName);
+            boolean esUnico = usuarioDAO.findByNickName(nickName);
 
-            if (usuarioExistente == null)
+            if (esUnico)
             {
-                resultado = true;  
+                resultado = true;  // El email no existe en la base de datos
             } else
             {
-                resultado = false;  
+                resultado = false;  // El email ya existe en la base de datos
             }
         } catch (HibernateException e)
         {
@@ -122,9 +140,9 @@ public class CrearCuentaServlet extends HttpServlet
         {
             session = Admin_HibernateUtilPostgr.getSessionFactory().openSession();
             UsuarioDAO usuarioDAO = new UsuarioDAO(session);
-            Usuario usuarioExistente = usuarioDAO.findByEmail(email);
+            boolean esUnico = usuarioDAO.findByEmail(email);
 
-            if (usuarioExistente == null)
+            if (esUnico)
             {
                 resultado = true;  // El email no existe en la base de datos
             } else

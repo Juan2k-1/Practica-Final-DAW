@@ -34,18 +34,22 @@
                 background-color: #45a049;
             }
         </style>
+        <script>
+            console.log("Contexto de la aplicación: " + '<%= request.getContextPath() %>');
+        </script>
+
     </head>
     <body>
 
         <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
-            <a href="${pageContext.request.contextPath}/jsp/index.jsp" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
-            <a href="${pageContext.request.contextPath}/jsp/InicioSesion.jsp" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>           
+            <a href="${pageContext.request.contextPath}/home/" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
+            <a href="${pageContext.request.contextPath}/home/IniciarSesion/" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>           
         </div>
 
         <header class="w3-display-container">
             <img class="w3-image" src="${pageContext.request.contextPath}/images/city2.jpg" alt="London" style="width: 100%; height: 100vh; object-fit: cover;"/>
             <div class="w3-container form-container w3-display-topmiddle" style="width:75%">
-                <form id="form1" action="${pageContext.request.contextPath}/Usuarios/CrearCuenta" method="post" onsubmit="return validaAltaUsuario()" class="w3-container w3-card-4">
+                <form id="form1" name="crearCuentaForm" action="${pageContext.request.contextPath}/home/IniciarSesion/CrearCuenta/GuardarUsuario/" method="post" class="w3-container w3-card-4">
                     <h2 class="w3-center w3-text-blue"><strong>Crear cuenta</strong></h2>
 
                     <label for="usuario">Usuario:</label>

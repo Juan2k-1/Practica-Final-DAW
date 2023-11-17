@@ -1,7 +1,6 @@
 package juan.practica.daw.controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,50 +37,17 @@ public class VueloController extends HttpServlet
 
         switch (accion)
         {
-            case "/SaveFlight":
+            case "/MostrarVuelos":
             {
-                vista = "/ShowAllFlights";
+                vista = "/jsp/ShowAllFlights.jsp";
                 break;
             }
-            case "/DeleteFlight":
-            {
-                vista = "/ShowAllFlights";
-                break;
-            }
-            case "/UpdateFlight":
-            {
-                vista = "/ShowAllFlights";
-                break;
-            }
-            case "/ShowAllFlights":
-            {
-                vista = "/ShowAllFlights";
-                break;
-            }
-            default: 
-                vista = "/index.html";
-                break;
         }
 
         RequestDispatcher rd = request.getRequestDispatcher(vista);
         rd.forward(request, response);
-
-        /*response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter())
-        {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet VueloController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet VueloController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }*/
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -111,15 +77,4 @@ public class VueloController extends HttpServlet
     {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo()
-    {
-        return "Short description";
-    }// </editor-fold>
 }

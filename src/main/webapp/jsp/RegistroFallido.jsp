@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +13,7 @@
                 <div class="w3-container">
                     <h2 class="w3-center">¡Registro Fallido!</h2>
                     <p>Hubo un problema al crear tu cuenta. Por favor, verifica la información ingresada e inténtalo nuevamente.</p>
-                    <a href="${pageContext.request.contextPath}/jsp/CreateAccount.jsp" class="w3-button w3-block w3-red w3-section">Volver a Intentar</a>
+                    <a href="${pageContext.request.contextPath}/home/IniciarSesion/" class="w3-button w3-block w3-red w3-section">Volver a Intentar</a>
                 </div>
             </div>
         </div>

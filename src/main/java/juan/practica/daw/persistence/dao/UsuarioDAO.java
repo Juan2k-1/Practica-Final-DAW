@@ -94,21 +94,22 @@ public class UsuarioDAO
      * @param email
      * @return
      */
-    public Usuario findByEmail(String email)
+    public boolean findByEmail(String email)
     {
-        /*Query consulta = this.session.createNativeQuery("SELECT * FROM USUARIO U WHERE U.email = :email", Usuario.class);
-        consulta.setParameter("email", email);
-        Transaction transaction = this.session.beginTransaction();
-        Usuario usuario = (Usuario) consulta.getSingleResult();
-        transaction.commit();
-        return usuario;*/
-  
         Usuario usuario = null;
+        boolean resultado = false;
         try
         {
             Query<Usuario> query = this.session.createQuery("FROM Usuario WHERE email = :email", Usuario.class);
             query.setParameter("email", email);
             usuario = query.uniqueResult();
+            if (usuario == null)
+            {
+                resultado = true;
+            } else
+            {
+                resultado = false;
+            }
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -119,7 +120,7 @@ public class UsuarioDAO
                 session.close();
             }
         }
-        return usuario;
+        return resultado;
     }
 
     /**
@@ -127,21 +128,22 @@ public class UsuarioDAO
      * @param nickName
      * @return
      */
-    public Usuario findByNickName(String nickName)
+    public boolean findByNickName(String nickName)
     {
-        /*Query consulta = this.session.createNativeQuery("SELECT * FROM USUARIO U WHERE U.nickname = :nickName", Usuario.class);
-        consulta.setParameter("nickName", nickName);
-        Transaction transaction = this.session.beginTransaction();
-        Usuario usuario = (Usuario) consulta.getSingleResult();
-        transaction.commit();
-        return usuario;*/
-        
+        boolean resultado = false;
         Usuario usuario = null;
         try
         {
-            Query<Usuario> query = this.session.createQuery("FROM Usuario WHERE nickname = :nickName", Usuario.class);
+            Query<Usuario> query = this.session.createQuery("FROM Usuario WHERE nickName = :nickName", Usuario.class);
             query.setParameter("nickName", nickName);
             usuario = query.uniqueResult();
+            if (usuario == null)
+            {
+                resultado = true;
+            } else
+            {
+                resultado = false;
+            }
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -152,7 +154,7 @@ public class UsuarioDAO
                 session.close();
             }
         }
-        return usuario;
+        return resultado;
     }
 
     /**
