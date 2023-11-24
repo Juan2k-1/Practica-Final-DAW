@@ -34,7 +34,7 @@
                 String usuarioAutenticado = (String) session.getAttribute("usuario");
                 if (usuarioAutenticado != null && !usuarioAutenticado.isEmpty()) {
             %>
-                    <a href="#" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> <%= usuarioAutenticado %></a>
+                    <a href="${pageContext.request.contextPath}/home/Logout/" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> <%= usuarioAutenticado %></a>
             <%
                 } else {
             %>

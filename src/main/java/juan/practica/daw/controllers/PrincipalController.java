@@ -77,6 +77,16 @@ public class PrincipalController extends HttpServlet
                 }
                 break;
             }
+            case "/Logout/":
+            {
+                HttpSession session = request.getSession(false);
+                if (session != null)
+                {
+                    session.invalidate(); // Cierra la sesión actual
+                    vista = "/jsp/Logout.jsp";
+                }
+                break;
+            }
             case "/IniciarSesion/CrearCuenta/GuardarUsuario/":
             {
                 String nombre = request.getParameter("nombre");
