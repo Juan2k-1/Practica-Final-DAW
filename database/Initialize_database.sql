@@ -14,5 +14,7 @@ CREATE TABLE USUARIO (
     nombre text NOT NULL,
     apellidos text NOT NULL,
     email text NOT NULL UNIQUE,
-    nickname text NOT NULL UNIQUE
+    nickname text NOT NULL UNIQUE,
+    hash_contraseña text NOT NULL,
+    salt text NOT NULL
 );

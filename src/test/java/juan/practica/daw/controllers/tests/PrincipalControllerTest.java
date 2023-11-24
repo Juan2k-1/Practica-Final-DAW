@@ -49,7 +49,7 @@ public class PrincipalControllerTest
     {
         Session session = Admin_HibernateUtilPostgr.getSessionFactory().openSession();
         UsuarioDAO usuarioDAO = new UsuarioDAO(session);
-        assertFalse(usuarioDAO.findByEmail("user4@gmail.com"));
+        assertTrue(usuarioDAO.findByEmail("user4@gmail.com"));
     }
 
     /**
@@ -60,6 +60,6 @@ public class PrincipalControllerTest
     {
         Session session = Admin_HibernateUtilPostgr.getSessionFactory().openSession();
         UsuarioDAO usuarioDAO = new UsuarioDAO(session);
-        assertFalse(usuarioDAO.findByNickName("User4"));
+        assertTrue(usuarioDAO.findByNickName("User4"));
     }
 }

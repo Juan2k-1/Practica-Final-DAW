@@ -32,6 +32,12 @@ public class Usuario implements Serializable
 
     @Column(name = "nickName", nullable = false, unique = true)
     private String nickName;
+    
+    @Column(name = "hash_contraseña", nullable = false)
+    private String hashContraseña;
+    
+    @Column(name = "salt", nullable = false)
+    private String salt;
 
     /**
      *
@@ -63,13 +69,17 @@ public class Usuario implements Serializable
      * @param apellido
      * @param email
      * @param nickName
+     * @param hash_contraseña
+     * @param salt
      */
-    public Usuario(String nombre, String apellido, String email, String nickName)
+    public Usuario(String nombre, String apellido, String email, String nickName, String hash_contraseña, String salt)
     {
         this.nombre = nombre;
         this.apellidos = apellido;
         this.email = email;
         this.nickName = nickName;
+        this.hashContraseña = hash_contraseña;
+        this.salt = salt;
     }
 
     /**
@@ -153,6 +163,24 @@ public class Usuario implements Serializable
         this.nickName = nickName;
     }
 
+    /**
+     *
+     * @return
+     */
+    public String getHashContraseña()
+    {
+        return hashContraseña;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getSalt()
+    {
+        return salt;
+    }   
+    
     /**
      *
      * @return

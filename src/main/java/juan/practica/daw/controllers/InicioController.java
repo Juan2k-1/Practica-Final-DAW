@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "InicioController", urlPatterns =
 {
-    "/"
+    ""
 })
 public class InicioController extends HttpServlet
 {

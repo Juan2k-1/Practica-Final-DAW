@@ -35,6 +35,9 @@
             }
         </style>
     </head>
+    <script>
+        var contextoDeLaAplicacion = '<%= request.getContextPath()%>';
+    </script>
     <body>
 
         <!-- Barra de navegación -->
@@ -46,7 +49,7 @@
         <header class="w3-display-container">
             <img class="w3-image" src="${pageContext.request.contextPath}/images/city2.jpg" alt="London" style="width: 100%; height: 100vh; object-fit: cover;"/>
             <div class="login-container w3-card-4 w3-display-topmiddle">
-                <form class="w3-container">
+                <form class="w3-container" id="formLogin" onsubmit="submitForm(event)">
                     <label class="w3-text-blue"><b><strong>Usuario</strong></b></label>
                     <input id="usuario" class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Ingresa tu usuario" name="usuario" required autocomplete="off">
 
@@ -60,5 +63,6 @@
             </div>
         </header>
         <script src="${pageContext.request.contextPath}/js/Script_RefreshLogin.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/Script_Autenticacion.js" type="text/javascript"></script>
     </body>
 </html>
