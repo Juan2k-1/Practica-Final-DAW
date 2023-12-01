@@ -56,8 +56,6 @@ public class PrincipalController extends HttpServlet
             {
                 String usuario = request.getParameter("usuario");
                 String contraseña = request.getParameter("contraseña");
-                //String usuario = "Alex";
-                //String contraseña = "1234567A";
                 System.out.println(usuario);
 
                 boolean autenticado = verificarCredenciales(usuario, contraseña);
@@ -67,12 +65,10 @@ public class PrincipalController extends HttpServlet
                     session.setAttribute("usuario", usuario);
 
                     // Redirige a la página principal después de la autenticación exitosa
-                    //response.sendRedirect(request.getContextPath() + "/home/");
                     vista = "/jsp/index.jsp";
                 } else
                 {
                     // Redirige a la página de inicio de sesión con un parámetro de error
-                    //response.sendRedirect(request.getContextPath() + "/home/IniciarSesion/?error=1");
                     vista = "/jsp/IniciarSesion.jsp";
                 }
                 break;

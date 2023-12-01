@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
  */
 public class VueloDAO
 {
+
     private final Session session;
 
     /**
@@ -97,6 +98,16 @@ public class VueloDAO
     public ArrayList<Vuelo> findAll(long id)
     {
         Query consulta = this.session.createNativeQuery("SELECT * FROM VUELO", Vuelo.class);
+        Transaction transaction = this.session.beginTransaction();
+        ArrayList<Vuelo> vuelos = (ArrayList<Vuelo>) consulta.getResultList();
+        transaction.commit();
+        return vuelos;
+    }
+
+    public ArrayList<Vuelo> findFlights(String origen, String destino)
+    {
+        Query consulta = this.session.createNativeQuery("SELECT * FROM VUELO V "
+                + "WHERE V.ciudad_origen =: origen AND V.ciudad_destino =: destino ", Vuelo.class);
         Transaction transaction = this.session.beginTransaction();
         ArrayList<Vuelo> vuelos = (ArrayList<Vuelo>) consulta.getResultList();
         transaction.commit();

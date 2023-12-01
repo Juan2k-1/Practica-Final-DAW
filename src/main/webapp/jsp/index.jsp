@@ -59,8 +59,8 @@
                     <div class="w3-row-padding" style="margin:0 -16px;">
                         <p class="w3-block w3-left-align">Selecciona tu vuelo</p>
                         <div id="menuContent" class="w3-half">
-                            <label>Desde:</label>
-                            <input class="w3-input w3-border" type="text" placeholder="Origen" required>
+                            <label for="origen">Desde:</label>
+                            <input class="w3-input w3-border" type="text" name="origen" placeholder="Origen" required>
                         </div>
                         <div class="w3-half">
                             <label for="destino">A:</label>
