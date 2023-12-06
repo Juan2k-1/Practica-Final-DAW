@@ -238,6 +238,6 @@ public class Vuelo implements Serializable
     @Override
     public String toString()
     {
-        return "juan.practica.daw.models.Vuelo[ id=" + id + " ]";
+        return "Vuelo{" + "id=" + id + ", fecha=" + fecha + ", horaLlegada=" + horaLlegada + ", horaSalida=" + horaSalida + ", estado=" + estado + ", puertaDeEmbarque=" + puertaDeEmbarque + ", ciudadOrigen=" + ciudadOrigen + ", ciudadDestino=" + ciudadDestino + '}';
     }
 }

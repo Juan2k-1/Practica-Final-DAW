@@ -8,6 +8,15 @@ INSERT INTO VUELO (fecha, hora_salida, hora_llegada, estado, puertaDeEmbarque, c
 VALUES ('2023/12/01', '16:30:00', '18:30:00', 'En hora', '13', 'Madrid', 'A Coruña');
 
 INSERT INTO VUELO (fecha, hora_salida, hora_llegada, estado, puertaDeEmbarque, ciudad_origen, ciudad_destino) 
+VALUES ('2023/12/01', '07:05:06', '09:05:06', 'En hora', '10', 'Madrid', 'Barcelona');
+INSERT INTO VUELO (fecha, hora_salida, hora_llegada, estado, puertaDeEmbarque, ciudad_origen, ciudad_destino) 
+VALUES ('2023/12/01', '09:00:00', '11:30:00', 'En hora', '11', 'Madrid', 'Sevilla');
+INSERT INTO VUELO (fecha, hora_salida, hora_llegada, estado, puertaDeEmbarque, ciudad_origen, ciudad_destino) 
+VALUES ('2023/12/01', '11:00:00', '12:00:00', 'En hora', '12', 'Madrid', 'Bilbao');
+INSERT INTO VUELO (fecha, hora_salida, hora_llegada, estado, puertaDeEmbarque, ciudad_origen, ciudad_destino) 
+VALUES ('2023/12/01', '13:30:00', '14:30:00', 'En hora', '13', 'Madrid', 'A Coruña');
+
+INSERT INTO VUELO (fecha, hora_salida, hora_llegada, estado, puertaDeEmbarque, ciudad_origen, ciudad_destino) 
 VALUES ('2023/12/02', '08:00:00', '11:30:00', 'En hora', '1', 'Málaga', 'Sevilla');
 INSERT INTO VUELO (fecha, hora_salida, hora_llegada, estado, puertaDeEmbarque, ciudad_origen, ciudad_destino) 
 VALUES ('2023/12/02', '10:00:00', '12:30:00', 'En hora', '2', 'Málaga', 'Madrid');

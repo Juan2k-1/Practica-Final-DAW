@@ -6,10 +6,11 @@
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/BuenaVida</property>
         <property name="hibernate.connection.password">userBuenaVida495</property>
-        <property name="hibernate.connection.username">buenaVida_user</property>
+        <property name="hibernate.connection.username">buenavida_user</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
         <property name="hibernate.show_sql">true</property>
         <mapping class="juan.practica.daw.models.Usuario"/>
+        <mapping class="juan.practica.daw.models.Vuelo"/>
     </session-factory>
 </hibernate-configuration>
 

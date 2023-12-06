@@ -106,8 +106,9 @@ public class VueloDAO
 
     public ArrayList<Vuelo> findFlights(String origen, String destino)
     {
-        Query consulta = this.session.createNativeQuery("SELECT * FROM VUELO V "
-                + "WHERE V.ciudad_origen =: origen AND V.ciudad_destino =: destino ", Vuelo.class);
+        Query consulta = this.session.createNativeQuery("SELECT * FROM VUELO V WHERE V.ciudad_origen = :origen AND V.ciudad_destino = :destino", Vuelo.class);
+        consulta.setParameter("origen", origen);
+        consulta.setParameter("destino", destino);
         Transaction transaction = this.session.beginTransaction();
         ArrayList<Vuelo> vuelos = (ArrayList<Vuelo>) consulta.getResultList();
         transaction.commit();

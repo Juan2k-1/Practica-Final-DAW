@@ -32,13 +32,15 @@
             <%-- Verifica si hay un usuario autenticado --%>
             <%
                 String usuarioAutenticado = (String) session.getAttribute("usuario");
-                if (usuarioAutenticado != null && !usuarioAutenticado.isEmpty()) {
+                if (usuarioAutenticado != null && !usuarioAutenticado.isEmpty())
+                {
             %>
-                    <a href="${pageContext.request.contextPath}/home/Logout/" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> <%= usuarioAutenticado %></a>
+            <a href="${pageContext.request.contextPath}/home/Logout/" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> <%= usuarioAutenticado%></a>
             <%
-                } else {
+            } else
+            {
             %>
-                    <a href="${pageContext.request.contextPath}/home/IniciarSesion/" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>
+            <a href="${pageContext.request.contextPath}/home/IniciarSesion/" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>
             <%
                 }
             %>
@@ -56,28 +58,31 @@
                 <!-- Pestañas -->
                 <div id="Vuelos" class="w3-container w3-white w3-padding-16">
                     <h3>Viaja a través del mundo con nosotros</h3>
-                    <div class="w3-row-padding" style="margin:0 -16px;">
-                        <p class="w3-block w3-left-align">Selecciona tu vuelo</p>
-                        <div id="menuContent" class="w3-half">
-                            <label for="origen">Desde:</label>
-                            <input class="w3-input w3-border" type="text" name="origen" placeholder="Origen" required>
+                    <form action="${pageContext.request.contextPath}/Vuelos/MostrarVuelos/" method="get">
+                        <div class="w3-row-padding" style="margin:0 -16px;">
+                            <p class="w3-block w3-left-align">Selecciona tu vuelo</p>
+                            <div id="menuContent" class="w3-half">
+                                <label for="origen">Desde:</label>
+                                <input class="w3-input w3-border" type="text" name="origen" placeholder="Origen" required>
+                            </div>
+                            <div class="w3-half">
+                                <label for="destino">A:</label>
+                                <input class="w3-input w3-border" id="destino" name="destino" type="text" placeholder="Destino" value="" required>
+                            </div>
+                            <div class="w3-half">
+                                <label>Fecha ida:</label>
+                                <input class="w3-input w3-border" type="date" required>
+                            </div>
+                            <div class="w3-half">
+                                <label>Fecha vuelta:</label>
+                                <input class="w3-input w3-border" type="date" required>
+                            </div>
                         </div>
-                        <div class="w3-half">
-                            <label for="destino">A:</label>
-                            <input class="w3-input w3-border" id="destino" name="destino" type="text" placeholder="Destino" value="" required>
-                        </div>
-                        <div class="w3-half">
-                            <label>Fecha ida:</label>
-                            <input class="w3-input w3-border" type="date" required>
-                        </div>
-                        <div class="w3-half">
-                            <label>Fecha vuelta:</label>
-                            <input class="w3-input w3-border" type="date">
-                        </div>
-                    </div>
-                    <p><a href="${pageContext.request.contextPath}/jsp/Vuelos.jsp" class="w3-button w3-black">Buscar y encontrar vuelos</a></p>
-                </div>              
-            </div>
+                        <p>
+                            <button type="submit" class="w3-button w3-black">Buscar y encontrar vuelos</button>
+                        </p>
+                    </form>              
+                </div>
         </header>
 
         <!-- Contenido de la página -->

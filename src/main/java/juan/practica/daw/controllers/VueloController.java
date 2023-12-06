@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import juan.practica.daw.models.Vuelo;
-import juan.practica.daw.persistence.Admin_HibernateUtilPostgr;
 import juan.practica.daw.persistence.User_HibernateUtilPostgr;
 import juan.practica.daw.persistence.dao.VueloDAO;
 import org.hibernate.Session;
@@ -54,6 +53,7 @@ public class VueloController extends HttpServlet
                     vista = "/jsp/NoFlights.jsp";
                 } else
                 {
+                    request.setAttribute("listaDeVuelos", vuelos);
                     vista = "/jsp/ShowSelectedFlights.jsp";
                 }
                 break;
