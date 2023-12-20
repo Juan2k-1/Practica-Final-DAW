@@ -18,6 +18,7 @@ import javax.persistence.Table;
 @Table(name = "vuelo")
 public class Vuelo implements Serializable
 {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -72,7 +73,7 @@ public class Vuelo implements Serializable
         this.ciudadOrigen = ciudadOrigen;
         this.ciudadDestino = ciudadDestino;
     }
-
+    
     /**
      *
      * @return
@@ -153,7 +154,7 @@ public class Vuelo implements Serializable
     {
         this.fecha = fecha;
     }
-    
+
     /**
      *
      * @param horaLlegada

@@ -58,11 +58,25 @@ public class VueloController extends HttpServlet
                 }
                 break;
             }
+            case "/MostrarVuelos/SeleccionarVuelo/":
+            {
+                String id = request.getParameter("vuelo");
+                if (id != null)
+                {
+                    long idVuelo = Long.parseLong(id);
+                    Vuelo vueloSeleccionado = buscarVueloPorID(idVuelo);
+
+                    request.setAttribute("vueloSeleccionado", vueloSeleccionado);
+
+                    vista = "/jsp/vuelosSeleccionados.jsp";
+                } 
+                break;
+            }
             default:
-                vista = "jsp/index.jsp";
+                vista = "/jsp/index.jsp";
                 break;
         }
-
+        System.out.println(vista);
         RequestDispatcher rd = request.getRequestDispatcher(vista);
         rd.forward(request, response);
     }
@@ -73,6 +87,14 @@ public class VueloController extends HttpServlet
         VueloDAO vueloDAO = new VueloDAO(session);
         ArrayList<Vuelo> vuelos = vueloDAO.findFlights(origen, destino);
         return vuelos;
+    }
+
+    private Vuelo buscarVueloPorID(Long id)
+    {
+        Session session = User_HibernateUtilPostgr.getSessionFactory().openSession();
+        VueloDAO vueloDAO = new VueloDAO(session);
+        Vuelo vuelo = vueloDAO.findById(id);
+        return vuelo;
     }
 
     /**

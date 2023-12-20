@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="juan.practica.daw.models.Vuelo"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -26,6 +26,10 @@
             }
         </style>
     </head>
+    <script>
+        var contextoDeLaAplicacion = '<%= request.getContextPath()%>';
+    </script>
+
     <body class="w3-light-grey">
 
         <!-- Barra de navegación -->
@@ -55,44 +59,50 @@
                 <div class="w3-bar w3-blue">
                     <button class="w3-bar-item w3-text-black w3-blue"><i class="fa fa-plane w3-margin-right"></i><strong>Lista de Vuelos</strong></button>                  
                 </div>
-                <div class="w3-container w3-white w3-padding-16"">
-                    <table class="w3-table w3-striped w3-bordered">
-                        <thead>
-                            <tr class="w3-blue">
-                                <th>ID</th>
-                                <th>Fecha</th>
-                                <th>Hora Salida</th>
-                                <th>Hora Llegada</th>
-                                <th>Estado</th>
-                                <th>Puerta de Embarque</th>
-                                <th>Ciudad Origen</th>
-                                <th>Ciudad Destino</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%
-                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-                                DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
-                            %>
-                            <c:forEach var="vuelo" items="${requestScope.listaDeVuelos}">
-                                <tr>
-                                    <td>${vuelo.id}</td>
-                                    <td>${vuelo.fecha != null ? vuelo.fecha : ''}</td>
-                                    <td>${vuelo.horaSalida != null ? vuelo.horaSalida : ''}</td>
-                                    <td>${vuelo.horaLlegada != null ? vuelo.horaLlegada : ''}</td>
-                                    <td>${vuelo.estado}</td>
-                                    <td>${vuelo.puertaDeEmbarque}</td>
-                                    <td>${vuelo.ciudadOrigen}</td>
-                                    <td>${vuelo.ciudadDestino}</td>
-                                    <td><input type="radio" name="seleccionVuelo" value="${vuelo.id}"></td>
+
+                <div class="w3-container w3-white w3-padding-16">
+                    <form id="seleccionarVueloForm" action="${pageContext.request.contextPath}/Vuelos/MostrarVuelos/SeleccionarVuelo/" method="post">
+                        <table id="vuelos" class="w3-table w3-striped w3-bordered">
+                            <thead>
+                                <tr class="w3-blue">
+                                    <th>ID</th>
+                                    <th>Fecha</th>
+                                    <th>Hora Salida</th>
+                                    <th>Hora Llegada</th>
+                                    <th>Estado</th>
+                                    <th>Puerta de Embarque</th>
+                                    <th>Ciudad Origen</th>
+                                    <th>Ciudad Destino</th>
                                 </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
-                    <div style="margin-bottom: 20px;"></div>
-                    <button class="w3-button w3-blue w3-right" onclick="seleccionarVuelo()">Seleccionar Vuelo</button>
+                            </thead>
+                            <tbody>
+                                <%
+                                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                                    DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+                                %>
+                                <c:forEach var="vuelo" items="${requestScope.listaDeVuelos}">
+                                    <tr>
+                                        <td>${vuelo.id}</td>
+                                        <td>${vuelo.fecha != null ? vuelo.fecha : ''}</td>
+                                        <td>${vuelo.horaSalida != null ? vuelo.horaSalida : ''}</td>
+                                        <td>${vuelo.horaLlegada != null ? vuelo.horaLlegada : ''}</td>
+                                        <td>${vuelo.estado}</td>
+                                        <td>${vuelo.puertaDeEmbarque}</td>
+                                        <td>${vuelo.ciudadOrigen}</td>
+                                        <td>${vuelo.ciudadDestino}</td>
+                                        <td><input type="radio" name="seleccionVuelo" id="Vuelo_Seleccionado_${vuelo.id}" value="${vuelo.id}"></td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                        <div style="margin-bottom: 20px;"></div>
+                        <button type="submit" class="w3-button w3-blue w3-right">Seleccionar Vuelo</button>
+                        <input type="hidden" id="vueloSeleccionadoId" name="vuelo" value="">
+                    </form>
                 </div>
             </div>
         </header>
     </body>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" ></script>
+    <script src="${pageContext.request.contextPath}/js/Script_SeleccionarVuelo.js" type="text/javascript"></script>
 </html>

@@ -83,7 +83,8 @@ public class VueloDAO
      */
     public Vuelo findById(long id)
     {
-        Query consulta = this.session.createNativeQuery("SELECT * FROM VUELO V WHERE V.id =: id", Vuelo.class);
+        Query consulta = this.session.createNativeQuery("SELECT * FROM VUELO V WHERE V.id =:id", Vuelo.class);
+        consulta.setParameter("id", id);
         Transaction transaction = this.session.beginTransaction();
         Vuelo vuelo = (Vuelo) consulta.getSingleResult();
         transaction.commit();
