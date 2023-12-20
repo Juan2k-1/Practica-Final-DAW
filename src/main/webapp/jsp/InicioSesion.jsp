@@ -38,13 +38,24 @@
     <script>
         var contextoDeLaAplicacion = '<%= request.getContextPath()%>';
     </script>
-    <body>
-
+    <body>      
         <!-- Barra de navegación -->
         <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
             <a href="${pageContext.request.contextPath}/home/" class="w3-bar-item w3-button w3-text-black w3-hover-blue"><b><i class="fa fa-map-marker w3-margin-right"></i>Agencia Buena Vida</b></a>
             <a href="${pageContext.request.contextPath}/home/IniciarSesion/" class="w3-bar-item w3-button w3-right w3-text-black w3-hover-blue"><i class="fa fa-user"></i> Iniciar sesión</a>           
         </div>
+        
+        <%
+            String mensajeError = (String) request.getAttribute("mensajeError");
+            if (mensajeError != null && !mensajeError.isEmpty())
+            {
+        %>
+        <script>
+            alert("<%= mensajeError%>");
+        </script>
+        <%
+            }
+        %>
 
         <header class="w3-display-container">
             <img class="w3-image" src="${pageContext.request.contextPath}/images/city2.jpg" alt="London" style="width: 100%; height: 100vh; object-fit: cover;"/>

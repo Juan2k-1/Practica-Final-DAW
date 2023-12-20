@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import juan.practica.daw.models.Vuelo;
 import juan.practica.daw.persistence.User_HibernateUtilPostgr;
 import juan.practica.daw.persistence.dao.VueloDAO;
@@ -69,7 +70,60 @@ public class VueloController extends HttpServlet
                     request.setAttribute("vueloSeleccionado", vueloSeleccionado);
 
                     vista = "/jsp/vuelosSeleccionados.jsp";
-                } 
+                }
+                break;
+            }
+            case "/MostrarVuelos/SeleccionarVuelo/ComprarBilletes/":
+            {
+                HttpSession session = request.getSession(false);
+                if (session != null && session.getAttribute("usuario") != null)
+                {
+                    // El usuario ha iniciado sesión, realiza las acciones necesarias
+                        vista = "/jsp/ComprarBilletes.jsp";
+                } else
+                {
+                    // El usuario no ha iniciado sesión, redirige a la página de inicio de sesión
+                    request.setAttribute("mensajeError", "Debes iniciar sesión antes de comprar billetes.");
+                    vista = "/home/IniciarSesion/";
+                }             
+                break;
+            }
+            case "/MostrarVuelos/SeleccionarVuelo/ProcesarCompra/":
+            {
+                // Recuperar los parámetros del formulario
+                int cantidadBilletes = Integer.parseInt(request.getParameter("cantidadBilletes"));
+                String tipoBillete = request.getParameter("tipoBillete");
+
+                // Verificar la disponibilidad de plazas
+                int plazasDisponibles = 200;
+                if (cantidadBilletes > plazasDisponibles)
+                {
+                    enviarMensajeError(request, response, "Error, ha seleccionado más plazas de las disponibles.");
+                }
+
+                // Calcular el precio total según el tipo de billete
+                double precioPorPersona = 0;
+                switch (tipoBillete)
+                {
+                    case "PrimeraClase":
+                        precioPorPersona = 50;
+                        break;
+                    case "Business":
+                        precioPorPersona = 25;
+                        break;
+                    case "Turista":
+                        precioPorPersona = 15;
+                        break;
+                    default:
+                        enviarMensajeError(request, response, "Error, tipo de billete no válido.");
+                        break;
+                }
+
+                double precioTotal = cantidadBilletes * precioPorPersona;
+                request.setAttribute("cantidadBilletes", cantidadBilletes);
+                request.setAttribute("tipoBillete", tipoBillete);
+                request.setAttribute("precioTotal", precioTotal);
+                vista = "/jsp/ResumenCompra.jsp";
                 break;
             }
             default:
@@ -78,6 +132,15 @@ public class VueloController extends HttpServlet
         }
         System.out.println(vista);
         RequestDispatcher rd = request.getRequestDispatcher(vista);
+        rd.forward(request, response);
+    }
+
+    private void enviarMensajeError(HttpServletRequest request, HttpServletResponse response, String mensaje) throws ServletException, IOException
+    {
+        request.setAttribute("mensajeError", mensaje);
+
+        // Y redirigir a la página de confirmación mostrando el mensaje de error
+        RequestDispatcher rd = request.getRequestDispatcher("/jsp/ConfirmacionCompra.jsp");
         rd.forward(request, response);
     }
 

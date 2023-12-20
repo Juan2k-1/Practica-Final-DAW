@@ -38,7 +38,6 @@ public class PrincipalController extends HttpServlet
     {
         String accion = request.getPathInfo();
         String vista = null;
-        //System.out.println(accion);
 
         switch (accion)
         {
@@ -101,14 +100,13 @@ public class PrincipalController extends HttpServlet
                 {
                     if (esNicknameUnico(nickName) && esEmailUnico(email))
                     {
-                        //System.out.println("Entro aqui");
                         Usuario user = new Usuario(nombre, apellidos, email, nickName, hashedPassword, salt);
                         registrarEnBD(user);
                         vista = "/jsp/RegistroExitoso.jsp";
-                    } else if (!esNicknameUnico(nickName))
+                    } else if (esNicknameUnico(nickName) == false)
                     {
                         vista = "/jsp/NickName_Repetido.jsp";
-                    } else
+                    } else if (esEmailUnico(email) == false)
                     {
                         vista = "/jsp/Email_Repetido.jsp";
                     }
