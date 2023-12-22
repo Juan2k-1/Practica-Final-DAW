@@ -70,12 +70,12 @@
                                 <input class="w3-input w3-border" id="destino" name="destino" type="text" placeholder="Destino" value="" required>
                             </div>
                             <div class="w3-half">
-                                <label>Fecha ida:</label>
-                                <input class="w3-input w3-border" type="date" required>
+                                <label for="ida">Fecha ida:</label>
+                                <input class="w3-input w3-border" type="date" name="ida" id="ida" required>
                             </div>
                             <div class="w3-half">
-                                <label>Fecha vuelta:</label>
-                                <input class="w3-input w3-border" type="date" required>
+                                <label for="vuelta">Fecha vuelta:</label>
+                                <input class="w3-input w3-border" type="date" id="vuelta">
                             </div>
                         </div>
                         <p>

@@ -1,7 +1,12 @@
 package juan.practica.daw.controllers;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,17 +50,29 @@ public class VueloController extends HttpServlet
         {
             case "/MostrarVuelos/":
             {
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
                 String origen = request.getParameter("origen");
                 String destino = request.getParameter("destino");
+                String fechaIda = request.getParameter("ida");
+                //String fechaVuelta = request.getParameter("vuelta");
 
-                ArrayList<Vuelo> vuelos = buscarVuelos(origen, destino);
-                if (vuelos == null)
+                try
                 {
-                    vista = "/jsp/NoFlights.jsp";
-                } else
+                    Date parsedFechaIda = format.parse(fechaIda);
+                    //Date parsedFechaVuelta = format.parse(fechaVuelta);
+                    ArrayList<Vuelo> vuelos = buscarVuelos(origen, destino, parsedFechaIda);
+                    if (vuelos == null)
+                    {
+                        vista = "/jsp/NoFlights.jsp";
+                    } else
+                    {
+                        request.setAttribute("listaDeVuelos", vuelos);
+                        vista = "/jsp/ShowSelectedFlights.jsp";
+                    }
+                } catch (ParseException ex)
                 {
-                    request.setAttribute("listaDeVuelos", vuelos);
-                    vista = "/jsp/ShowSelectedFlights.jsp";
+                    Logger.getLogger(VueloController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 break;
             }
@@ -79,13 +96,13 @@ public class VueloController extends HttpServlet
                 if (session != null && session.getAttribute("usuario") != null)
                 {
                     // El usuario ha iniciado sesión, realiza las acciones necesarias
-                        vista = "/jsp/ComprarBilletes.jsp";
+                    vista = "/jsp/ComprarBilletes.jsp";
                 } else
                 {
                     // El usuario no ha iniciado sesión, redirige a la página de inicio de sesión
                     request.setAttribute("mensajeError", "Debes iniciar sesión antes de comprar billetes.");
                     vista = "/home/IniciarSesion/";
-                }             
+                }
                 break;
             }
             case "/MostrarVuelos/SeleccionarVuelo/ProcesarCompra/":
@@ -144,11 +161,11 @@ public class VueloController extends HttpServlet
         rd.forward(request, response);
     }
 
-    private ArrayList<Vuelo> buscarVuelos(String origen, String destino)
+    private ArrayList<Vuelo> buscarVuelos(String origen, String destino, Date ida)
     {
         Session session = User_HibernateUtilPostgr.getSessionFactory().openSession();
         VueloDAO vueloDAO = new VueloDAO(session);
-        ArrayList<Vuelo> vuelos = vueloDAO.findFlights(origen, destino);
+        ArrayList<Vuelo> vuelos = vueloDAO.findFlights(origen, destino, ida);
         return vuelos;
     }
 

@@ -12,7 +12,7 @@
             <div class="w3-card w3-round w3-white">
                 <div class="w3-container">
                     <h2 class="w3-center">¡Registro Fallido!</h2>
-                    <p>Hubo un problema al crear tu cuenta. El email introducido ya existe.</p>
+                    <p>Hubo un problema al crear tu cuenta. El nickname introducido ya existe.</p>
                     <a href="${pageContext.request.contextPath}/home/IniciarSesion/" class="w3-button w3-block w3-red w3-section">Volver a Intentar</a>
                 </div>
             </div>

@@ -1,6 +1,8 @@
 package juan.practica.daw.persistence.dao;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import juan.practica.daw.models.Vuelo;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -105,11 +107,12 @@ public class VueloDAO
         return vuelos;
     }
 
-    public ArrayList<Vuelo> findFlights(String origen, String destino)
+    public ArrayList<Vuelo> findFlights(String origen, String destino, Date fechaIda)
     {
-        Query consulta = this.session.createNativeQuery("SELECT * FROM VUELO V WHERE V.ciudad_origen = :origen AND V.ciudad_destino = :destino", Vuelo.class);
+        Query consulta = this.session.createNativeQuery("SELECT * FROM VUELO V WHERE V.ciudad_origen = :origen AND V.ciudad_destino = :destino AND fecha = :fechaIda", Vuelo.class);
         consulta.setParameter("origen", origen);
         consulta.setParameter("destino", destino);
+        consulta.setParameter("fechaIda", fechaIda);
         Transaction transaction = this.session.beginTransaction();
         ArrayList<Vuelo> vuelos = (ArrayList<Vuelo>) consulta.getResultList();
         transaction.commit();

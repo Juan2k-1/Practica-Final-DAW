@@ -137,20 +137,12 @@ public class PrincipalController extends HttpServlet
         boolean resultado;
         Session session = null;
         Transaction transaction = null;
-        System.out.println(nickName);
         try
         {
             session = Admin_HibernateUtilPostgr.getSessionFactory().openSession();
             UsuarioDAO usuarioDAO = new UsuarioDAO(session);
             boolean esUnico = usuarioDAO.findByNickName(nickName);
-
-            if (esUnico)
-            {
-                resultado = true;  // El email no existe en la base de datos
-            } else
-            {
-                resultado = false;  // El email ya existe en la base de datos
-            }
+            resultado = esUnico; 
         } catch (HibernateException e)
         {
             if (transaction != null)
