@@ -55,7 +55,6 @@ public class PrincipalController extends HttpServlet
             {
                 String usuario = request.getParameter("usuario");
                 String contraseña = request.getParameter("contraseña");
-                System.out.println(usuario);
 
                 boolean autenticado = verificarCredenciales(usuario, contraseña);
                 if (autenticado)

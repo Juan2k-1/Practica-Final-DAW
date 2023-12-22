@@ -1,6 +1,5 @@
 package juan.practica.daw.persistence.dao;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import juan.practica.daw.models.Vuelo;
@@ -39,7 +38,6 @@ public class VueloDAO
             transaction.commit();
         } catch (Exception e)
         {
-            //this.vMensaje.MensajeDeError("Error al insertar un usuario", e.getMessage());
             transaction.rollback();
         }
     }

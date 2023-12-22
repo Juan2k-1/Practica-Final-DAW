@@ -55,12 +55,10 @@ public class VueloController extends HttpServlet
                 String origen = request.getParameter("origen");
                 String destino = request.getParameter("destino");
                 String fechaIda = request.getParameter("ida");
-                //String fechaVuelta = request.getParameter("vuelta");
 
                 try
                 {
                     Date parsedFechaIda = format.parse(fechaIda);
-                    //Date parsedFechaVuelta = format.parse(fechaVuelta);
                     ArrayList<Vuelo> vuelos = buscarVuelos(origen, destino, parsedFechaIda);
                     if (vuelos == null)
                     {
@@ -147,7 +145,6 @@ public class VueloController extends HttpServlet
                 vista = "/jsp/index.jsp";
                 break;
         }
-        System.out.println(vista);
         RequestDispatcher rd = request.getRequestDispatcher(vista);
         rd.forward(request, response);
     }
