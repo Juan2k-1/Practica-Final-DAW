@@ -131,41 +131,6 @@
             </div>
 
             <div class="w3-container">
-                <h3>Explorar el mundo</h3>
-                <p>Viaja con nosotros y vive la naturelaza en su estado puro.</p>
-            </div>
-            <div class="w3-row-padding">
-                <div class="w3-half w3-margin-bottom">
-                    <img src="/w3images/ocean2.jpg" alt="" style="width:100%">
-                    <div class="w3-container w3-white">
-                        <h3>Noruega, Coste Oeste</h3>
-                        <p class="w3-opacity">Vuelos desde 79€</p>
-                        <p>Visita las frondosas e inexploradas tierras noruegas.</p>
-                        <button class="w3-button w3-blue w3-margin-bottom">Comprar billetes</button>
-                    </div>
-                </div>
-                <div class="w3-half w3-margin-bottom">
-                    <img src="/w3images/mountains2.jpg" alt="" style="width:100%">
-                    <div class="w3-container w3-white">
-                        <h3>Austria, Montañas</h3>
-                        <p class="w3-opacity">Vuelos desde $39</p>
-                        <p>Visita las zonas más vírgenes de la cordillera montañosa de Austria.</p>
-                        <button class="w3-button w3-blue w3-margin-bottom">Comprar billetes</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="w3-container">
-                <div class="w3-panel w3-padding-16 w3-black w3-opacity w3-card w3-hover-opacity-off">
-                    <h2>¡Sé el primero en obtener las mejores ofertas!</h2>
-                    <p>Únete a nuestro newsletter.</p>
-                    <label>E-mail</label>
-                    <input class="w3-input w3-border" type="text" placeholder="Introduce tu correo electrónico">
-                    <button type="button" class="w3-button w3-blue w3-margin-top">Subscríbete</button>
-                </div>
-            </div>
-
-            <div class="w3-container">
                 <h2>Contacto</h2>
                 <p>¡Déjanos organizar tu próximo viaje!</p>
                 <i class="fa fa-map-marker" style="width:30px"></i> Huelva, ES<br>
